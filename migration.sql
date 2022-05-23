@@ -1,8 +1,7 @@
+
 CREATE TABLE recipe(
     recipe_id SERIAL PRIMARY KEY,
-    ingredients TEXT,
-    instructions TEXT
+    recipe_ingredients TEXT,
+    recipe_instructions TEXT
 );
-
-
 
