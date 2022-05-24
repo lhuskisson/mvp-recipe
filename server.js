@@ -10,15 +10,16 @@ const pool = new Pool({
     host: "localhost",
     database: "recipe_db",
     PORT: 5432
-})
+});
+
 pool.connect()
 app.use(express.static("public"));
 app.use(express.json())
-app.listen(PORT, () =>{
+app.listen(PORT, () => {
 console.log(`listening on ${PORT}`)
-})
+});
 
-app.get("/recipe_db", async function(req, res){
+app.get("/recipe", async function(req, res){
     try {
         if (data.rows.length === 0) {
             res.send('Empty database')
@@ -33,7 +34,7 @@ app.get("/recipe_db", async function(req, res){
     }
 })
 
-app.get('/recipe_db/:id', async function (req, res, next) {
+app.get('/recipe/:id', async function (req, res, next) {
     try {
         let id = req.params.id
         if (!Number(id)){
@@ -47,7 +48,7 @@ app.get('/recipe_db/:id', async function (req, res, next) {
     }
 })
 
-app.post('/recipe_db', async function (req, res) {
+app.post('/recipe', async function (req, res) {
     try {
         let recipe_name = req.body.name
         let recipe_ingredients = req.body.ingredients
@@ -63,7 +64,7 @@ app.post('/recipe_db', async function (req, res) {
     }
 })
 
-app.patch('/recipe_db/:id', async function (req, res, next) {
+app.patch('/recipe/:id', async function (req, res, next) {
     try {
       let recipe_name = req.body.name
       let recipe_ingredients = req.body.ingredients
@@ -84,7 +85,7 @@ app.patch('/recipe_db/:id', async function (req, res, next) {
     }
 } )
 
-app.delete('/recipe_db/:id', async function (req, res, next) {
+app.delete('/recipe/:id', async function (req, res, next) {
     try {
         let id = req.params.id
         if (!Number(id)){
