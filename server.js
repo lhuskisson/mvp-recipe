@@ -2,19 +2,11 @@ require("dotenv").config();
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 8000 
-const {Pool} = require('pg')
+const db = require("./db/conn")
 
-const pool = new Pool({
-    user: "leehuskisson",
-    password:'',
-    host: "localhost",
-    database: "recipe_db",
-    PORT: 5432
-});
-
-pool.connect()
 app.use(express.static("public"));
 app.use(express.json())
+
 app.listen(PORT, () => {
 console.log(`listening on ${PORT}`)
 });
