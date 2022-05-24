@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.header {
+  padding: 60px;
+  text-align: center;
+  background: #1abc9c;
+  color: white;
+  font-size: 30px;
+}
+
+.menu {
+  height: 50px;
+  background-color: #B2D6FF;    
+}
+
+.sidebar {
+  height: 200px;
+  background-color: #F09A9D;   
+}
+
+.content {
+  height: 500px;
+  background-color: #F5CF8E;    
+}
+
+.footer {
+  height: 50px;
+  background-color: #D6E9FE;    
+}

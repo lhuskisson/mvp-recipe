@@ -32,10 +32,7 @@ app.get("/recipe", async function(req, res){
 app.get('/recipe/:id', async function (req, res, next) {
     try {
         let id = req.params.id
-        if (!Number(id)){
-            return next()
-        }
-        const data = await pool.query('SELECT * FROM recipe WHERE recipe_id = $1', [id])
+        const data = await pool.query('SELECT * FROM recipe WHERE id = $1', [id])
         res.json(data.rows)
     } catch (error) {
         console.log(error.message)
@@ -50,9 +47,6 @@ app.post('/recipe', async function (req, res) {
         let recipe_instructions = req.body.instructions
         await pool.query('INSERT INTO recipe (recipe_name, recipe_ingredients, recipe_instructions)VALUES($1, $2, $3)', [recipe_name, recipe_ingredients, recipe_instructions])
         res.json(req.body)
-        if (!recipe_name || !recipe_ingredients || !recipe_instructions) {
-            return res.send('Send Correct Info')
-        }
     } catch (error) {
         console.log(error.message)
         res.send(error.message)
@@ -65,14 +59,8 @@ app.patch('/recipe/:id', async function (req, res, next) {
       let recipe_ingredients = req.body.ingredients
       let recipe_instructions = req.body.instructions
       let id = req.params.id
-        if (!Number(id)){
-            return next()
-        }
-        
-        await pool.query(`UPDATE recipe SET recipe_name = $1, recipe_ingredients = $2, recipe_instructions = $3 WHERE recipe_id = $4`,[recipe_name, recipe_ingredients, recipe_instructions, id])
-       if (!recipe_name || !recipe_ingredients || !recipe_instructions) {
-           return next()
-       }
+
+        await pool.query(`UPDATE recipe SET recipe_name = $1, recipe_ingredients = $2, recipe_instructions = $3 WHERE id = $4`,[recipe_name, recipe_ingredients, recipe_instructions, id])
         res.json(req.body)
     } catch (error) {
         console.log(error.message)
@@ -83,10 +71,6 @@ app.patch('/recipe/:id', async function (req, res, next) {
 app.delete('/recipe/:id', async function (req, res, next) {
     try {
         let id = req.params.id
-        if (!Number(id)){
-            return next()
-        }
-
         let data = await pool.query("DELETE FROM recipe WHERE recipe_id = $1", [id])
         if (data.rowCount === 0) {
             return next()
