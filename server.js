@@ -8,7 +8,7 @@ const pool = new Pool({
     user: "leehuskisson",
     password:'',
     host: "localhost",
-    database: "recipe",
+    database: "recipe_db",
     PORT: 5432
 })
 pool.connect()
@@ -18,7 +18,7 @@ app.listen(PORT, () =>{
 console.log(`listening on ${PORT}`)
 })
 
-app.get("/friend", async function(req, res){
+app.get("/recipe_db", async function(req, res){
     try {
         if (data.rows.length === 0) {
             res.send('Empty database')
@@ -33,7 +33,7 @@ app.get("/friend", async function(req, res){
     }
 })
 
-app.get('/recipe/:id', async function (req, res, next) {
+app.get('/recipe_db/:id', async function (req, res, next) {
     try {
         let id = req.params.id
         if (!Number(id)){
@@ -47,7 +47,7 @@ app.get('/recipe/:id', async function (req, res, next) {
     }
 })
 
-app.post('/recipe', async function (req, res) {
+app.post('/recipe_db', async function (req, res) {
     try {
         let recipe_name = req.body.name
         let recipe_ingredients = req.body.ingredients
@@ -63,7 +63,7 @@ app.post('/recipe', async function (req, res) {
     }
 })
 
-app.patch('/friend/:id', async function (req, res, next) {
+app.patch('/recipe_db/:id', async function (req, res, next) {
     try {
       let recipe_name = req.body.name
       let recipe_ingredients = req.body.ingredients
@@ -84,7 +84,7 @@ app.patch('/friend/:id', async function (req, res, next) {
     }
 } )
 
-app.delete('/recipe/:id', async function (req, res, next) {
+app.delete('/recipe_db/:id', async function (req, res, next) {
     try {
         let id = req.params.id
         if (!Number(id)){
