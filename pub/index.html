@@ -5,91 +5,33 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recipe Tracker</title>
-    <script src="main.js"></script>
     <link rel="stylesheet" href="styles.css">
+    
+  </head>
+  <body>
+    
+    <header>
+      <h1>Recipe Tracker</h1>
+      <div id="list"></div>
+      <button id="btn">Recipe List</button>
+    </header>
 
     
-</head>
-<body>
-  <h3 id="recipes-header">
-    <div>
-        Recipe Tracker
-    </div>
-  </h3>
+    <main>
+      <article>
+        <h2>Recipe Open Extended Section</h2>
+        <p></p>
+      </article>
+      <aside>Recipe Stack</aside>
+    </main>
 
-  <div>
-    <button id="new-recipe-btn">Add a Recipe</button>
-  </div>
 
-  <form id="recipe-form">
-      <div class="input-field">
-          <label for="name">Recipe Name</label>
-          <input type="text" name="name" id="name" placeholder="Yummy name">
-      </div>
 
-      <div class="input-field">
-          <label for="url">Recipe URL</label>
-          <input type="text" name="url" id="url" placeholder="Enter URL">
-      </div>
-
-      <div class="input-field">
-          <label for="img_url">URL for Recipe Image</label>
-          <input type="text" name="img_url" id="img_url" placeholder="Enter URL">
-      </div>    
-
-      <input type="submit" value=&#10003 class="btn">
-  </form>
-
-  <div class="container">
-    <div class="recipes-list"></div>
-    <div class="saved-recipes">
-        <h2 style="text-align: center">Weekly Menu Planner</h2>
-
-        <div class="daily-recipes">
-            <h3>Monday</h3>
-            <ul id="monday-menu"></ul>
-            <i class="fas fa-trash-alt"></i>
-        </div> 
-
-        <div class="daily-recipes">
-            <h3>Tuesday</h3>
-            <ul id="tuesday-menu"></ul>
-            <i class="fas fa-trash-alt"></i>
-        </div> 
-
-        <div class="daily-recipes">
-            <h3>Wednesday</h3>
-            <ul id="wednesday-menu"></ul>
-            <i class="fas fa-trash-alt"></i>
-        </div> 
-
-        <div class="daily-recipes">
-            <h3>Thursday</h3>
-            <ul id="thursday-menu"></ul>
-            <i class="fas fa-trash-alt"></i>
-        </div> 
-
-        <div class="daily-recipes">
-            <h3>Friday</h3>
-            <ul id="friday-menu"></ul>
-            <i class="fas fa-trash-alt"></i>
-        </div> 
-
-        <div class="daily-recipes">
-            <h3>Saturday</h3>
-            <ul id="saturday-menu"></ul>
-            <i class="fas fa-trash-alt"></i>
-        </div> 
-
-        <div class="daily-recipes">
-            <h3>Sunday</h3>
-            <ul id="sunday-menu"></ul>
-            <i class="fas fa-trash-alt"></i>
-        </div> 
-
-        <button class="btn" id="save-menus">Save Changes</button>
-    </div>
-  </div>
-
-</body>
+    
+    <footer>
+      <p>Footer Placeholder &#169;</p>
+    </footer>
+    
+    <script src="main.js"></script>
+  </body>
 </html>

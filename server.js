@@ -21,7 +21,7 @@ app.listen(PORT, () => {
 console.log(`listening on ${PORT}`)
 });
 
-app.get("/recipe", async function(req, res){
+app.get("/api/recipe", async function(req, res){
     try {
         const data = await pool.query(`SELECT * FROM recipe`)
         res.json(data.rows)
@@ -31,7 +31,7 @@ app.get("/recipe", async function(req, res){
     }
 })
 
-app.get('/recipe/:id', async function (req, res, next) {
+app.get('/api/recipe/:id', async function (req, res,) {
     try {
         let id = req.params.id
         const data = await pool.query('SELECT * FROM recipe WHERE id = $1', [id])
@@ -42,7 +42,7 @@ app.get('/recipe/:id', async function (req, res, next) {
     }
 })
 
-app.post('/recipe', async function (req, res) {
+app.post('/api/recipe', async function (req, res) {
     try {
         let recipe_name = req.body.recipe_name
         let recipe_ingredients = req.body.recipe_ingredients
@@ -55,7 +55,7 @@ app.post('/recipe', async function (req, res) {
     }
 })
 
-app.patch('/recipe/:id', async function (req, res, next) {
+app.patch('/api/recipe/:id', async function (req, res,) {
     try {
       let recipe_name = req.body.recipe_name
       let recipe_ingredients = req.body.recipe_ingredients
