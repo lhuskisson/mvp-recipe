@@ -1,68 +1,225 @@
-html {
-  background-color: #deded8;
-  font-family: trebuchet, geneva, sans-serif;
-}
-body {
+body, html {
   margin: 0;
-}
-article, aside, footer, header {
-  padding: 0.5rem;
-  box-sizing: border-box;
-}
-header {
-  background-color: #333;
-  color: #ccc;
-  text-align: center;
-  border-bottom: 1px solid;
-}
-aside {
-  background-color: white;
-}
-footer {
-  background-color: rgb(144, 128, 128); 
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
 }
 
-nav {
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 10px;
   display: flex;
-  background-color: black;
-  padding: 10px 0;
+  justify-content: center;
+  align-items: center;
 }
-nav a {
-  flex: auto;
+
+.recipes-list {
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 72%;
+  height: 100%;
+  border-style: solid;
+  border-width: 5px;
+  border-color: black;
+  border-collapse: collapse;
+  overflow: auto;
+}
+
+.saved-recipes {
+  float: right;
+  position: relative;
+  width: 550px;
+  height: 100%;
+  padding-right: 10px;
+  padding-top: 10px;
+  text-align: left;
+  
+}
+
+.daily-recipes {
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  height: 12%;
+  width: 90%;
+  margin-bottom: 10px;
+  border-width: 2px;
+  border-color: green;
+  border-style: solid; 
+  padding-left: 5px;
+}
+
+.daily-recipes > i {
+  margin-left: 90%;
+  margin-top: 8%;
+}
+
+.daily-recipes > h3 {
+  font-size: 2rem;
+  font-size: 100%
+}
+
+.daily-recipes > ul {
+  overflow: auto; 
+}
+
+#recipes-header{
+  display: flex;
+  justify-content: center;
+  height: 7rem;
+  font-size: 5rem;
+  margin-bottom: -20px;
+}
+
+.card {
   text-align: center;
-  background: #ccc;
-  color: black;
-  margin: 0 5px;
-  padding: 5px 0;
-  text-decoration: none;
+  position: relative; 
+  border: grey solid 1px;
+  padding: 1rem;
+  width: 25rem;
+  height: 25rem;
+  display: inline-grid;
+  margin: 1rem 2rem;
+  box-shadow: 0px 0px 30px 2px #000
 }
-nav a:hover {
-  outline: 1px solid red;
+
+.card-url {
+  font-size: 1.5rem;
+}
+
+.recipe-img {
+  justify-self: center;
+  height: 12rem;
+  width: auto;
+  max-width: 100%;
+}
+
+ul {
+  text-align: left;
+}
+
+.recipe-notes {
+  height: 5rem;
+  overflow: auto;
+}
+
+.add-note-btn {
+  background-color: #4CAF50;
+  font-size: 1rem;
+  border-radius: 8px;
+  opacity: 0.8;
+  width: 150px;
+  height: 40px;
+  margin-left: 60%;
+}
+
+.add-note-btn:hover {
+  opacity: 1;
+}
+
+#save-menus {
+  background-color: #4CAF50;
+  font-size: 1rem;
+  border-radius: 8px;
+  opacity: 0.8;
+  width: 150px;
+  height: 40px;
+  margin-left: 60%;
+}
+
+#save-menus:hover {
+  opacity: 1;
+}
+
+.delete-button {
+  background-color: Transparent; 
+  border: none; 
+}
+
+.delete-recipe-btn {
+  position: absolute;
+  width: auto;
+  height: 2rem;
+  right: 0;
+  top: 0;
+}
+
+.fas.fa-times {
   color: red;
-  text-decoration: underline;
+  font-size: 1rem; 
+}
+
+.fas.fa-trash-alt {
+  font-size: 1.5rem;
+  color: red;
+  opacity: 0.5;
+}
+
+#new-recipe-btn {
+  background-color: #4CAF50;
+  font-size: 1rem;
+  border-radius: 8px;
+  opacity: 0.8;
+  width: auto;
+  height: 2.5rem;
+  margin-left: 5%;
+}
+
+#new-recipe-btn:hover {
+  opacity: 1;
 }
 
 
-@media screen and (min-width: 30rem) {
-  body {
-    display: flex;
-    flex-direction: column;
-    max-width: 75rem;
-    margin: auto;
-  }
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    border-bottom: 0.5rem solid;
-  }
-  nav, header {
-    order: -1;
-  }
-  article {
-    flex: 75%;
-  }
-  aside {
-    flex: 25%;
-  }
+#recipe-form {
+  padding: 1rem;
+  align-items: center; 
+  width: 40%;
+  height: auto;
+  display: none;
+  background: #515da2;
+  opacity: .8;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-field {
+  font-size: 1.2rem;
+  padding: 5px;
+}
+
+#recipe-form input {
+  font-size: 1.2rem;
+  border: 2px solid grey;
+  border-radius: 4px;
+  padding: 5px;
+}
+
+#recipe-form input:focus {
+  border: 4px solid green;
+  border-radius: 4px;
+}
+
+#recipe-form label {
+  margin: 5px 10px 5px 0;
+}
+
+#recipe-form input[type="submit"] {
+  color: green;
+  font-size: 1.5rem;
+  opacity: 0.8;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#recipe-form input[type="submit"]:hover {
+  opacity: 1;
+}
+
+ul li {
+  padding: 5px;
 }
