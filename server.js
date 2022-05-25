@@ -23,8 +23,8 @@ console.log(`listening on ${PORT}`)
 
 app.get("/api/recipe", async function(req, res){
     try {
-        const data = await pool.query(`SELECT * FROM recipe`)
-        res.json(data.rows)
+        const result = await pool.query(`SELECT * FROM recipe`)
+        res.json(result.rows)
     } catch (error) {
         console.log(error.message)
         res.send(error.message)
@@ -34,8 +34,8 @@ app.get("/api/recipe", async function(req, res){
 app.get('/api/recipe/:id', async function (req, res,) {
     try {
         let id = req.params.id
-        const data = await pool.query('SELECT * FROM recipe WHERE id = $1', [id])
-        res.json(data.rows)
+        const result = await pool.query('SELECT * FROM recipe WHERE id = $1', [id])
+        res.json(result.rows)
     } catch (error) {
         console.log(error.message)
         res.send(error.message)
