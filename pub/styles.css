@@ -1,5 +1,5 @@
 html {
-  background-color: #deded8;
+  background-color: #b4b4ad;
   font-family: trebuchet;
 }
 body {
@@ -21,27 +21,6 @@ aside {
 footer {
   background-color: rgb(144, 128, 128); 
 }
-
-nav {
-  display: flex;
-  background-color: black;
-  padding: 10px 0;
-}
-nav a {
-  flex: auto;
-  text-align: center;
-  background: #ccc;
-  color: black;
-  margin: 0 5px;
-  padding: 5px 0;
-  text-decoration: none;
-}
-nav a:hover {
-  outline: 1px solid red;
-  color: red;
-  text-decoration: underline;
-}
-
 
 @media screen and (min-width: 30rem) {
   body {
