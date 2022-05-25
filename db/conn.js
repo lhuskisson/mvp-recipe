@@ -1,12 +1,12 @@
 const { Pool } = require('pg');
 const { finalizeSession } = require('pg/lib/sasl');
 
-const pool = new Pool({
-    ssl:{
-        rejectUnauthorized: false
-    },
+const pool = new Pool ({
     connectionString: process.env.DATABASE_URL,
-   
-});
-
-module.exports = pool;
+    ssl: {
+      rejectUnauthorized: false
+    }
+  })
+  
+  
+  module.exports = pool;
