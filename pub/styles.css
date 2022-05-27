@@ -21,6 +21,61 @@ aside {
 footer {
   background-color: rgb(144, 128, 128); 
 }
+#mainpage {
+width: 90vw;
+height: 90vh;
+display: grid;
+grid-template-columns: 40vw 40vw;
+grid-gap: 5vw;
+grid-template-areas: 
+"instructionscontainer titlecontainer"; 
+
+}
+
+#instructionscontainer {
+background-color:thistle
+}
+
+#titlecontainer {
+background-color: aqua;
+
+}
+
+#createbtn {
+backface-visibility: visible;
+}
+
+#udpatebtn {
+
+}
+
+#deletebtn {
+
+}
+
+
+
+
+
+
+
+
+.hide {
+  display: none !important;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
 @media screen and (min-width: 30rem) {
   body {

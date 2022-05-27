@@ -70,6 +70,16 @@ app.patch('/api/recipe/:id', async function (req, res,) {
     }
 } )
 
+app.delete('api/recipe/:id', async function (req, res) {
+    try {
+        let id = req.params.id
+        await pool.query('DELTE FROM recipe WHERE id =$1', [id])
+        res.json(req.body)
+    } catch (error) {
+        res.send(error.message)
+    }
+})
+
 app.use((req, res, next) =>{
     res.status(404)
     res.send("not found")
