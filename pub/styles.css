@@ -26,22 +26,24 @@ footer {
   body {
     display: flex;
     flex-direction: column;
-    max-width: 75rem;
+    max-width: 80rem;
     margin: auto;
   }
   main {
     display: flex;
     flex-wrap: wrap;
     box-sizing: border-box;
-    border-bottom: 0.5rem solid;
+    border-bottom: .5rem solid;
   }
   nav, header {
     order: -1;
   }
   article {
     flex: 75%;
+    display: flex;
   }
   aside {
+    display: flex;
     flex: 25%;
   }
 }
