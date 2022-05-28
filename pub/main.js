@@ -6,7 +6,6 @@ const title = document.querySelector('#titlecontainer')
 const instructions = document.querySelector('#instructionscontainer')
 
 addListeners()
-
 function addListeners() {
     window.addEventListener('load', getRecipe)
 }
@@ -55,11 +54,6 @@ function createOneRecipe(elem) {
     instructions.appendChild(div2)
     instructions.appendChild(div3)
 }
-///==========Not sure what this is doing right now========//
-function addEventListenerToOneRecipe(div) {
-    div.addEventListener('click', getOneRecipe)
-    console.log('I dont know what this is doing')
-}
 
 //=======Display One Recipe========//
 async function getOneRecipe(e) {
@@ -69,20 +63,32 @@ async function getOneRecipe(e) {
 }
 
 
+//=======Add Recipe=============//
 
+//async function add
 
 //===========Update Recipe==========//
 
-function updateRecipe() {
+////async function updateRecipe() 
 
-}
+
+
 
 
 //==========Delete Recipe=======//
 
+////async function deleteRecipe() 
 
-/*
+
+
+
+///==========Not sure what this is doing right now========//
+
 function appendListItemToList(div) {
     var list = document.querySelector('#list')
     list.append(div)
-}*/
+}
+function addEventListenerToOneRecipe(div) {
+    div.addEventListener('click', getOneRecipe)
+    console.log('I dont know what this is doing')
+}

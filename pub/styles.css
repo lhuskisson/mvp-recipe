@@ -2,19 +2,32 @@ html {
   background-color: #b4b4ad;
   font-family: trebuchet;
 }
-body {
-  margin: 0;
-}
-article, aside, footer, header {
+
+  body {
+    display: flex;
+    flex-direction: column;
+    max-width: 80rem;
+    margin: auto;
+  }
+
+article, aside, footer, header, #footer {
   padding: 0.5rem;
   box-sizing: border-box;
 }
+
 header {
   background-color: #333;
   color: #ccc;
+  width: 85vw;
   text-align: center;
   border-bottom: 1px solid;
 }
+
+#footer {
+background-color: #333;
+width: 85vw;
+}
+
 aside {
   background-color: white;
 }
@@ -34,6 +47,7 @@ grid-template-areas:
 
 #instructionscontainer {
 background-color:thistle
+
 }
 
 #titlecontainer {
@@ -41,24 +55,28 @@ background-color: aqua;
 
 }
 
-#createbtn {
-backface-visibility: visible;
+#grid-container {
+display: grid;
+grid-template-columns: auto auto auto auto;
+justify-content: space-evenly;
+border-style: solid;
 }
 
-#udpatebtn {
+#createbtn:hover {
+border-radius: 20px;
+background-color: orange;
 
 }
 
-#deletebtn {
-
+#updatebtn:hover {
+  border-radius: 20px;
+  background-color: orange;
 }
 
-
-
-
-
-
-
+#deletebtn:hover {
+  border-radius: 20px;
+  background-color: orange;
+}
 
 .hide {
   display: none !important;
@@ -75,30 +93,3 @@ backface-visibility: visible;
 
 
 
-
-
-@media screen and (min-width: 30rem) {
-  body {
-    display: flex;
-    flex-direction: column;
-    max-width: 80rem;
-    margin: auto;
-  }
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    box-sizing: border-box;
-    border-bottom: .5rem solid;
-  }
-  nav, header {
-    order: -1;
-  }
-  article {
-    flex: 75%;
-    display: flex;
-  }
-  aside {
-    display: flex;
-    flex: 25%;
-  }
-}
