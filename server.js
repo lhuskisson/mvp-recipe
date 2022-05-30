@@ -28,7 +28,7 @@ app.get("/api/task", async function (req, res) {
     try {
         console.log('server reached')
         const result = await pool.query('SELECT * FROM task')
-        console.log(result.rows)
+        console.log(result)
         res.json(result.rows)
     } catch (error) {
         res.send(error)
