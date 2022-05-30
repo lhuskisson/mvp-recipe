@@ -1,95 +1,148 @@
-html {
-  background-color: #b4b4ad;
-  font-family: trebuchet;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'STIX Two Text', serif;
 }
 
-  body {
-    display: flex;
-    flex-direction: column;
-    max-width: 80rem;
+.menu-container {
+    color: rgb(66, 66, 66);
+    background-color: #ccdbfd; 
+    padding: 20px 0;
+    justify-content: center;
+    
+    
+  }
+  
+  .menu {
     margin: auto;
+    width: 900px;
   }
 
-article, aside, footer, header, #footer {
-  padding: 0.5rem;
-  box-sizing: border-box;
+  .date {
+    font-size: 1.7em;
+    text-align: center;
+}
+  
+
+.header-container {
+    background-color: #f8edeb;
+    padding: 20px 0;
+  }
+  
+  .title-wrapper, .form {
+    margin: auto;
+    width: 50%;
+  }
+
+  .title-name {
+    font-size: 4em;
+    color: rgb(66, 66, 66);
+    text-align: center;
+    margin-bottom: .2em;
 }
 
-header {
-  background-color: #333;
-  color: #ccc;
-  width: 85vw;
-  text-align: center;
-  border-bottom: 1px solid;
-}
+  .form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
 
-#footer {
-background-color: #333;
-width: 85vw;
-}
+  #task-name, #add-task-btn {
+    height: 40px;
+    font-size: 1.5em;
+    border: 1.5px solid #ffb3c1;
+    margin: .3em 0;
+  }
 
-aside {
-  background-color: white;
-}
-footer {
-  background-color: rgb(144, 128, 128); 
-}
-#mainpage {
-width: 90vw;
-height: 90vh;
-display: grid;
-grid-template-columns: 40vw 40vw;
-grid-gap: 5vw;
-grid-template-areas: 
-"instructionscontainer titlecontainer"; 
+  #task-name {
+    border-right: none;
+    width: 70%;
+    padding-left: .7em;
+    color: black; 
+  }
 
-}
+  #add-task-btn {
+    background: pink;
+    color: white;
+    cursor: pointer;
+    width: 7%;
+  }
 
-#instructionscontainer {
-background-color:thistle
-
-}
-
-#titlecontainer {
-background-color: aqua;
-
-}
-
-#grid-container {
-display: grid;
-grid-template-columns: auto auto auto auto;
-justify-content: space-evenly;
-border-style: solid;
-}
-
-#createbtn:hover {
-border-radius: 20px;
-background-color: orange;
-
-}
-
-#updatebtn:hover {
-  border-radius: 20px;
-  background-color: orange;
-}
-
-#deletebtn:hover {
-  border-radius: 20px;
-  background-color: orange;
-}
-
-.hide {
-  display: none !important;
-
+  #add-task-btn:hover {
+    background-color: rgb(248, 126, 147);
 }
 
 
+.task-container {
+    padding: 10px 0;
+    justify-content: center;
+    background-color: coral;
+  }
 
+  .error {
+    color: red;
+    font-size: 1.5em;
+    text-align: center;
+  }
 
+  ul {
+    list-style: none;
+  }
 
+  .task-list {
+    width: 40%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+  
+  .tasks {
+    border-bottom: 1px solid black;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: .5em;
+  }
 
+  .list-item {
+    width: 90%;
+    word-wrap: break-word;
+    font-size: 1.5em;
+    padding: .2em .2em;
+    margin: 0 .2em;
+  }
 
+  .md-task {
+    cursor: pointer;
+  }
+  .remove-btn {
+    cursor: pointer;
+    margin-left: auto;
+    font-size: 1.5em;
+    opacity: .5;
+  }
 
+  .tasks:hover {
+    background-color: rgb(224, 224, 224);
+    visibility: visible;
+  }
 
+  input[class=md-task]:checked~li.list-item {
+    text-decoration: line-through;
+    color: black;
+}
 
-
+.footer {
+    margin: auto;
+    padding: 20px 0;
+  } 
+  
+  .footer-item {
+    float: right;
+    margin-right: 20em;
+  }

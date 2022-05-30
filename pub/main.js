@@ -1,94 +1,139 @@
-const listmainpage = document.querySelector('#mainpage')
-const createbtn = document.querySelector('#createbtn')
-const updatebtn = document.querySelector('#updatebtn')
-const deletebtn = document.querySelector('#deletebtn')
-const title = document.querySelector('#titlecontainer')
-const instructions = document.querySelector('#instructionscontainer')
 
-addListeners()
-function addListeners() {
-    window.addEventListener('load', getRecipe)
-}
 
-async function getRecipe() {
-    const result = await fetch('http://localhost:8000/api/recipe')
-    const data = await result.json()
-    console.log(data)
-    createRecipe(data)
+    const ulArea = $(".task-list")
+
+    init()
     
-}
+    function init() {
+        getTaskItem();
+        addEventListenerToXBtn();
+        addEventListenerToAddTaskBtn();
+    }
 
-function createRecipe (arr) {
-    arr.forEach((elem) => {
-        createOneRecipe(elem)
-    })
-}
+    ///////////GET///////////////
+    async function getTaskItem() {
+        const result = await fetch('http://localhost:8000/api/task')
+        const data = await result.json()
+        for (let i of data) {
+            createAndAppendDivTask(i.id, i.task_name)
+       }
+       console.log(data)
+    }
 
+    /////////////////////POST///////////////////
+    async function postTaskItem(url = 'http://localhost:8000/api/task', data = {}) {
+        console.log(data)
+        const response = await fetch( url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        return response.json()
+    }
+    /////////////////PATCH/////////////////
+    async function patchTaskItem(id) {
+        const response = await fetch (`https://localhost:8000/api/task${id}`, 
+        {
+            method: 'PUT',
+            headers: {
+                "Content-Type": 'application/json',
+            },
+        })
+        body: string
+    }
 
-//======Display Recipes on Page======//
-function createOneRecipe(elem) {
-    const div = document.createElement('div')
-    const div2 = document.createElement('div')
-    const div3 = document.createElement('div')
-    div.textContent = elem.recipe_name
-    div2.textContent = elem.recipe_ingredients
-    div3.textContent = elem.recipe_instructions
-    div.className = 'result'
-    div.id = elem.id
-    div2.classList.add(elem.id)
-    div3.classList.add(elem.id)
-    div2.classList.add('hide')
-    div3.classList.add('hide')
-    div.addEventListener('click', () => {
-        let showinstructions = document.querySelector('#instructionscontainer')
-        for (let i = 0; i < showinstructions.length; i++) {
-            let current = showinstructions[i]
-            current.classList.remove('hide')
-            console.log(current[i])
-        }
+    
+    ////////DELETE////////////////
+    async function deleteTaskItem(id) {
+        console.log(id)
         
-    })
+        const response = await fetch(`http://localhost:8000/api/task/${id}`, 
+        {
 
-    addEventListenerToOneRecipe(div)
-    title.appendChild(div)
-    instructions.appendChild(div2)
-    instructions.appendChild(div3)
-}
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        })
+        const data = await response.json()
+        console.log (data)
+    }
 
-//=======Display One Recipe========//
-async function getOneRecipe(e) {
-    const result = await fetch (`http://localhost:8000/api/recipe/${e.target.id}`)
-    const data = await result.json()
-    console.log(data)
-}
+    /////////CREATE AND APPEND/////////////////
+        function createAndAppendDivTask(taskId, taskName) {
+            console.log(taskId)
+        const taskDiv = $('<div></div>').addClass('tasks').attr('id', taskId)
+        const input = $(`<input type='checkbox' id=box-${taskId} class='md-task'/>`)    
+        const li = $('<li></li>').addClass('list-item').text(taskName)
+        const divBtn = $('<div></div>').addClass('remove-btn').text('x').attr('id', taskId)
+        $(taskDiv).append(input)
+        $(taskDiv).append(li)
+        $(taskDiv).append(divBtn)
+        ulArea.append(taskDiv)
+    }
+
+    /////////////ADD EVENT LISTENERS//////////////
+    function addEventListenerToAddTaskBtn() {
+        $('#add-task-btn').on('click', () => {
+            const textInput = $('#task-name').val()
+            if (textInput.length === 0) {
+                $('.error').show()
+                $('.error').text('Nothing is not a task, lazy bones')
+            } else {
+                let lastTaskId = ulArea.children().last().attr('id')
+                if (lastTaskId === undefined) {
+                    lastTaskId = 1;
+                    $('.error').hide()
+                    createAndAppendDivTask(lastTaskId, textInput)
+                    postTaskItem('/api/task', {task_name: textInput})
+                } else {
+                    lastTaskId++;
+                    $('.error').hide()
+                    createAndAppendDivTask(lastTaskId, textInput)
+                    postTaskItem('/api/task', {task_name: textInput})
+                }
+            }
+        })
+    }
+    
+    function addEventListenerToXBtn() {
+        ulArea.on('click', (e) => {
+            const isXBtn = e.target.getAttribute('class') === 'remove-btn'
+            let divId = e.target.getAttribute('id')
+            if (isXBtn) {
+                const btnId = e.target.getAttribute('id')
+                divId = btnId;
+                $(`#${divId}`).hide()
+                deleteTaskItem(divId)
+            }
+            console.log(divId)
+        })
+    }
+    
 
 
-//=======Add Recipe=============//
-
-//async function add
-
-//===========Update Recipe==========//
-
-////async function updateRecipe() 
 
 
 
 
 
-//==========Delete Recipe=======//
-
-////async function deleteRecipe() 
 
 
 
 
-///==========Not sure what this is doing right now========//
 
-function appendListItemToList(div) {
-    var list = document.querySelector('#list')
-    list.append(div)
-}
-function addEventListenerToOneRecipe(div) {
-    div.addEventListener('click', getOneRecipe)
-    console.log('I dont know what this is doing')
-}
+
+    // date manipulation
+    function getDate() { 
+        const fullDate = new Date() 
+        const year = fullDate.getFullYear();
+        const month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][fullDate.getMonth()];
+        const date = fullDate.getDate();
+        const weekDay = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][fullDate.getDay()];
+        const formatted_date = `${month} ${date}, ${year}`
+        
+     
+       
+    }

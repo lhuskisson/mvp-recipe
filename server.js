@@ -1,40 +1,40 @@
 require("dotenv").config();
+
 const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 8000 
-const db = require("./db/conn")
+
+//connecting to DB
 const {Pool} = require('pg')
 const pool = new Pool({
-    user: "leehuskisson",
-    password:'',
-    host: "localhost",
-    database: "recipe_db",
-    PORT: 5432
+    connectionString: process.env.DATABASE_URL
 });
+///////////////////
 
-pool.connect()
 
-app.use(express.static("public"));
+//use built-in express middleware
+app.use(express.static("pub"));
 app.use(express.json())
 
-app.listen(PORT, () => {
-console.log(`listening on ${PORT}`)
-});
+/////////////////////////////////
 
-app.get("/api/recipe", async function(req, res){
+
+///GET DB/////
+app.get("/api/task", async function (req, res) {
     try {
-        const result = await pool.query(`SELECT * FROM recipe`)
+        console.log('server reached')
+        const result = await pool.query(`SELECT * FROM task`)
+        console.log(result.rows)
         res.json(result.rows)
     } catch (error) {
-        console.log(error.message)
         res.send(error.message)
     }
 })
 
-app.get('/api/recipe/:id', async function (req, res,) {
+app.get('/api/task/:id', async function (req, res,) {
     try {
         let id = req.params.id
-        const result = await pool.query('SELECT * FROM recipe WHERE id = $1', [id])
+        const result = await pool.query('SELECT * FROM task WHERE id = $1', [id])
         res.json(result.rows)
     } catch (error) {
         console.log(error.message)
@@ -42,12 +42,11 @@ app.get('/api/recipe/:id', async function (req, res,) {
     }
 })
 
-app.post('/api/recipe', async function (req, res) {
+app.post('/api/task', async function (req, res) {
     try {
-        let recipe_name = req.body.recipe_name
-        let recipe_ingredients = req.body.recipe_ingredients
-        let recipe_instructions = req.body.recipe_instructions
-        await pool.query('INSERT INTO recipe (recipe_name, recipe_ingredients, recipe_instructions)VALUES($1, $2, $3)', [recipe_name, recipe_ingredients, recipe_instructions])
+        console.log(req.body)
+        let task_name = req.body.task_name
+        await pool.query('INSERT INTO task(task_name)VALUES($1)', [task_name])
         res.json(req.body)
     } catch (error) {
         console.log(error.message)
@@ -55,14 +54,12 @@ app.post('/api/recipe', async function (req, res) {
     }
 })
 
-app.patch('/api/recipe/:id', async function (req, res,) {
+app.patch('/api/task/:id', async function (req, res,) {
     try {
-      let recipe_name = req.body.recipe_name
-      let recipe_ingredients = req.body.recipe_ingredients
-      let recipe_instructions = req.body.recipe_instructions
-      let id = req.params.id
-
-        await pool.query(`UPDATE recipe SET recipe_name = $1, recipe_ingredients = $2, recipe_instructions = $3 WHERE id = $4`,[recipe_name, recipe_ingredients, recipe_instructions, id])
+        let task_name = req.body.task_name
+        let id = req.params.id
+        
+        await pool.query(`UPDATE task SET task_name = $1 WHERE id = $2`,[task_name, id])
         res.json(req.body)
     } catch (error) {
         console.log(error.message)
@@ -70,17 +67,18 @@ app.patch('/api/recipe/:id', async function (req, res,) {
     }
 } )
 
-app.delete('api/recipe/:id', async function (req, res) {
+app.delete('/api/task/:id', async function (req, res) {
     try {
         let id = req.params.id
-        await pool.query('DELTE FROM recipe WHERE id =$1', [id])
-        res.json(req.body)
+        console.log(id)
+        await pool.query('DELETE FROM task WHERE id =$1', [id])
+        res.json({msg:'user deleted'})
     } catch (error) {
         res.send(error.message)
     }
 })
 
-app.use((req, res, next) =>{
-    res.status(404)
-    res.send("not found")
-}) 
+
+app.listen(PORT, () => {
+console.log(`listening on ${PORT}`)
+});

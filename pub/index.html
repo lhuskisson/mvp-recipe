@@ -4,48 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recipe Tracker</title>
     <link rel="stylesheet" href="styles.css">
-    
-  </head>
-
-  
-  <header>
-    <h1>Struggle Bus Household Recipe Tracker</h1>
-    
-    </form>
-    
-    <button id="createbtn"> Create Recipe</button>
-    <button id="updatebtn"> Update Recipe</button>
-    <button id="deletebtn"> Delete Recipe</button>
-  </header>
-
-
-  <body>
-    
-    <div id="mainpage">
-      <div id="titlecontainer">
-        
-      </div>
-      <div id="instructionscontainer">
-        <div id="grid-container">
-          <div>placeholder</div>
-          <div>placeholder</div>
-          <div>placeholder</div>  
-          <div>4</div>
-          <div>5</div>
-          <div>6</div>
-          <div>7</div>
-          <div>8</div>
+    <title>Full Stack Task List</title>
+</head>
+<body>
+    <div class='menu-container'>
+        <div class='menu'>
+          <h1>Stuff I'm Probably Not Going To Get To This Year</h1>
+            <div class='date'></div>
         </div>
-      </div>
-
     </div>
-    
-    
 
-    <footer id="footer">Some Text</footer>
-    
-    <script src="main.js"></script>
-  </body>
+    <div class='header-container'>
+        <div class="title-wrapper">
+            <h1 class='title-name'></h1>
+        </div>
+        <div class='form'>
+            <input type='text' id='task-name' placeholder="Add To-Dos Here..." max-length="100" required autocomplete="off"/>
+            <button id='add-task-btn'>+</button>
+        </div>
+    </div>
+
+    <div class='task-container'>
+        <div class='error' contenteditable="true"></div>
+        <ul class='task-list' contenteditable="true">
+        </ul>
+    </div>
+
+     <div class='footer'>
+        <div class='footer-item'>
+            <h3>All Rights Reserverd</h3>
+        </div>
+    </div> 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script defer src='main.js'></script>
+</body>
 </html>
