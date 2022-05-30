@@ -1,6 +1,8 @@
 
 
     const ulArea = $(".task-list")
+    //const server = "http://localhost:8000"; 
+    const server =  "https://thawing-harbor-45268.herokuapp.com"
 
     init()
     
@@ -12,7 +14,7 @@
 
     ///////////GET///////////////
     async function getTaskItem() {
-        const result = await fetch('http://localhost:8000/api/task')
+        const result = await fetch(`${server}/api/task`)
         const data = await result.json()
         for (let i of data) {
             createAndAppendDivTask(i.id, i.task_name)
@@ -21,7 +23,7 @@
     }
 
     /////////////////////POST///////////////////
-    async function postTaskItem(url = 'http://localhost:8000/api/task', data = {}) {
+    async function postTaskItem(url = `${server}/api/task`, data = {}) {
         console.log(data)
         const response = await fetch( url, {
             method: 'POST',
@@ -34,7 +36,7 @@
     }
     /////////////////PATCH/////////////////
     async function patchTaskItem(id) {
-        const response = await fetch (`https://localhost:8000/api/task${id}`, 
+        const response = await fetch (`${server}/api/task${id}`, 
         {
             method: 'PUT',
             headers: {
@@ -49,7 +51,7 @@
     async function deleteTaskItem(id) {
         console.log(id)
         
-        const response = await fetch(`http://localhost:8000/api/task/${id}`, 
+        const response = await fetch(`${server}/api/task/${id}`, 
         {
 
             method: 'DELETE',
