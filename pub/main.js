@@ -17,7 +17,7 @@
         const result = await fetch("https://thawing-harbor-45268.herokuapp.com/api/task")
         console.log(result)
         const data = await result.json()
-        console.log('after data')
+        console.log(data)
         for (let i of data) {
             console.log('in the loop' +i)
             createAndAppendDivTask(i.id, i.task_name)
