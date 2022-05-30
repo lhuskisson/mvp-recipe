@@ -14,7 +14,7 @@
 
     ///////////GET///////////////
     async function getTaskItem() {
-        const result = await fetch(`${server}/api/task`)
+        const result = await fetch("https://thawing-harbor-45268.herokuapp.com/api/task")
         const data = await result.json()
         for (let i of data) {
             createAndAppendDivTask(i.id, i.task_name)
