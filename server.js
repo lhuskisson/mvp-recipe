@@ -7,8 +7,12 @@ const PORT = process.env.PORT || 8000
 //connecting to DB
 const {Pool} = require('pg')
 const pool = new Pool({
-    connectionString: process.env.DATABASE_URL
+    connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthoried: false
+    }
 });
+module.exports = pool;
 ///////////////////
 
 
