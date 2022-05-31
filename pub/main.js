@@ -117,28 +117,3 @@
         })
     }
     
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // date manipulation
-    function getDate() { 
-        const fullDate = new Date() 
-        const year = fullDate.getFullYear();
-        const month = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'][fullDate.getMonth()];
-        const date = fullDate.getDate();
-        const weekDay = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][fullDate.getDay()];
-        const formatted_date = `${month} ${date}, ${year}`
-        
-     
-       
-    }
